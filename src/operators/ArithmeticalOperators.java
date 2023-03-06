@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 /**
  * Arithmetical operators.
  */
-public class Operators {
+public class ArithmeticalOperators {
     public static void main(String[] args) {
         // +
         int a = 10;
