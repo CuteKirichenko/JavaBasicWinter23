@@ -7,6 +7,7 @@ public class BitwiseOperators {
     public static void main(String[] args) {
         int a = 378;
         int b = 576;
+
         int c = a | b;
         int d = a & b;
         int e = a ^ b;
@@ -18,7 +19,11 @@ public class BitwiseOperators {
         System.out.println(Integer.toBinaryString(b));
 
         System.out.println("a | b = " + Integer.toBinaryString(c));
+        System.out.println(Integer.toBinaryString(a));
+        System.out.println(Integer.toBinaryString(b));
+
         System.out.println("a & b = " + Integer.toBinaryString(d));
+
         System.out.println("a ^ b = " + Integer.toBinaryString(e));
         System.out.println("~ b = " + Integer.toBinaryString(f));
 
@@ -31,10 +36,13 @@ public class BitwiseOperators {
         int y = 3;//количество "ячеек" сдвига
 
         int z = (x << y);
+        System.out.println("--------------------------");
         System.out.println(Integer.toBinaryString(x));
         System.out.println(Integer.toBinaryString(z));
         //после сдвига число 64 стало числом 512 в десятичном представлении
         System.out.println(z);
+
+        System.out.println("--------------------------");
 
         //сдвиг вправо - деление на 2 с отбрасыванием остатка
         System.out.println(35 >> 2);
