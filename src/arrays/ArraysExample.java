@@ -160,12 +160,12 @@ public class ArraysExample {
 
         //задаем булев трёхмерный массив. На этой парковке есть 3 этажа,
         // на каждом из которых можно поместить 2х5 = 10 машин. По умолчанию все ячейки пусты (false)
-        boolean[][][] parkingLot = new boolean[3][2][5];
+        boolean[][][] parkingLot = new boolean[4][3][4];
         //Выведем массив в консоль
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             //-------------------------------
-            for (int j = 0; j < 2; j++) {
-                for (int k = 0; k < 5; k++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 4; k++) {
                     System.out.print("arr[" + i + "][" + j + "][" + k + "] = " + parkingLot[i][j][k] + "\t");
                 }
                 System.out.println();
@@ -174,15 +174,14 @@ public class ArraysExample {
         }
 
         System.out.println("----------------------------------------------------");
-        //приехало две машины и припарковались на нулевом этаже в ячейке [1][0] и [1][3]
-        parkingLot[0][1][0] = true;
-        parkingLot[0][1][3] = true;
+        // машина припарковалась на 3 этаже в ячейке [1][0]
+        parkingLot[3][1][0] = true;
 
         //Выведем массив в консоль
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             //-------------------------------
-            for (int j = 0; j < 2; j++) {
-                for (int k = 0; k < 5; k++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 4; k++) {
                     System.out.print("arr[" + i + "][" + j + "][" + k + "] = " + parkingLot[i][j][k] + "\t");
                 }
                 System.out.println();
@@ -256,7 +255,6 @@ public class ArraysExample {
 
         //-----------------------------------
         //bubble
-
         int[][] data = {
                 {},
                 {1},
@@ -285,6 +283,28 @@ public class ArraysExample {
             System.out.println(Arrays.toString(arr));
         }
 
+        System.out.println("------------------------------------");
+        int[] example = {6, 8, 3, 123, 5, 4, 1, 2, 0, 9, 7};
+        Arrays.sort(example);
+        System.out.println(Arrays.toString(example));
+        System.out.println("------------------------------------");
+
+
+        int[] line = {2, 4, 6, 8, 10, 12, 14, 16, 18};
+        int index = jumpSearch(line, 16);
+        System.out.println("Jump search result: " + index);
+
+        //interpolation search: pos = low + ((key - arr[low]) * (high - low)) / (arr[high] - arr[low])
+        int[] arr = {1, 3, 5, 7, 9, 11, 13, 15};
+        int key = 13;
+        int interpolationSearchResult = interpolationSearch(arr, key);
+        System.out.println(interpolationSearchResult); // Output: 3
+
+        //exponential search
+        int[] exponentialArr = {2, 4, 6, 8, 10, 12, 14, 16, 18};
+        int exponentialKey = 10;
+        int exponentialResult = exponentialSearch(exponentialArr, exponentialKey);
+        System.out.println(exponentialResult); // Output: 4
     }
 
     //Сложность О(n) Фибоначчи
@@ -402,10 +422,10 @@ public class ArraysExample {
     }
 
     //3. Двоичный поиск, рекурсивный подход
-    public static int recursiveBinarySearch(int[] array, int firstElement, int lastElement, int elementToSearch) {
+    public static int recursiveBinarySearch(int[] array, int firstElementIndex, int lastElementIndex, int elementToSearch) {
         // условие прекращения
-        if (lastElement >= firstElement) {
-            int middle = (lastElement + firstElement) / 2;
+        if (lastElementIndex >= firstElementIndex) {
+            int middle = (lastElementIndex + firstElementIndex) / 2;
 
             // если средний элемент - целевой элемент, вернуть его индекс
             if (array[middle] == elementToSearch) {
@@ -415,16 +435,16 @@ public class ArraysExample {
             // если средний элемент больше целевого
             // вызываем метод рекурсивно по суженным данным
             if (array[middle] > elementToSearch) {
-                return recursiveBinarySearch(array, firstElement, middle - 1, elementToSearch);
+                return recursiveBinarySearch(array, firstElementIndex, middle - 1, elementToSearch);
             }
 
             // также, вызываем метод рекурсивно по суженным данным
-            return recursiveBinarySearch(array, middle + 1, lastElement, elementToSearch);
+            return recursiveBinarySearch(array, middle + 1, lastElementIndex, elementToSearch);
         }
         return -1;
     }
 
-    //4. Поиск прыжками
+    //4. Поиск прыжками - Math.sqrt это квадратный корень
     public static int jumpSearch(int[] array, int elementToSearch) {
         int arrayLength = array.length;
         int jumpStep = (int) Math.sqrt(array.length);
@@ -448,5 +468,46 @@ public class ArraysExample {
             return previousStep;
         }
         return -1;
+    }
+
+    //Интерполяционный поиск
+    public static int interpolationSearch(int[] arr, int key) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high && key >= arr[low] && key <= arr[high]) {
+            int pos = low + ((key - arr[low]) * (high - low)) / (arr[high] - arr[low]);
+
+            if (arr[pos] == key) {
+                return pos;
+            }
+
+            if (arr[pos] < key) {
+                low = pos + 1;
+            } else {
+                high = pos - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    //Экспонеенциальный поиск
+    public static int exponentialSearch(int[] arr, int key) {
+        int n = arr.length;
+
+        // If the key is the first element
+        if (arr[0] == key) {
+            return 0;
+        }
+
+        // Find the range for binary search
+        int i = 1;
+        while (i < n && arr[i] <= key) {
+            i *= 2;
+        }
+
+        // Perform binary search in the identified range
+        return Arrays.binarySearch(arr, i / 2, Math.min(i, n), key);
     }
 }
