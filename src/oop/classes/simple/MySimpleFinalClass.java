@@ -13,9 +13,9 @@ public final class MySimpleFinalClass {
         //one = 2;
     }
 
-    //Пробуем переопределить финальный метод
- /*   public void myFinalMethod() {
+    //Пробуем переопределить финальный метод - сделаем класс не финальным и пробуем в MySimpleClass
+    public final void myFinalMethod() {
         System.out.println("overridden method is final");
-    }*/
+    }
 
 }
