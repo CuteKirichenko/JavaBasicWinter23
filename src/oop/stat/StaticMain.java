@@ -1,6 +1,8 @@
 package oop.stat;
 
 
+import oop.constructor.inheritance.Child;
+
 public class StaticMain {
     public static void main(String[] args) {
         //кол-во объектов 0 - еще не создавали
@@ -20,14 +22,23 @@ public class StaticMain {
         System.out.println(person4.getPersonCount());
 
         System.out.println(PersonChild.i);
+        System.out.println("-----------------------------------");
         //при обращении к статическому методу, который объявлен как в родительском, так и в дочернем классе,
         // во время компиляции всегда будет вызван метод исходя из типа переменной
-        Person child = new PersonChild("Nina", "Volodymirivna", "Husak");
-        //PersonChild child = new PersonChild("Nina", "Volodymirivna", "Husak");
+        //Person child = new PersonChild("Nina", "Volodymirivna", "Husak");
+        PersonChild child = new PersonChild("Nina", "Volodymirivna", "Husak");
         System.out.println(child.getFio(child));
 
         //Static вложенные классы
         Person.Pet pet;
-        //Child.Pet childPet; //ОШИБКА
+        PersonChild.Pet childPet = new Person.Pet();
+
+        // оголосити об'єкт класу OutClass.InClass.InClass2
+        OutClass.InClass.InClass2 obj = new OutClass.InClass.InClass2();
+        int t;
+
+        obj.d2 = 23; // OutClass.InClass.InClass2.d
+        t = obj.d2;
+        System.out.println(t);
     }
 }

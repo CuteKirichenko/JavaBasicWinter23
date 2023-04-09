@@ -12,10 +12,10 @@ public class ConstructorMain {
         Person person = new Person();
         System.out.println(person.create);
 
-        Person person1 = new Person("Ivan", "Ivanov", 18);
+        Person person1 = new Person("Ivan", "Koval", 18);
         System.out.println(person1.age);
 
-        Person person2 = new Person("Ivan", "Ivanov", 18, false, true, LocalDateTime.now());
+        Person person2 = new Person("Ivan", "Koval", 18, false, true, LocalDateTime.now());
         System.out.println(person2.create);
 
         Person personCopy2 = new Person(person2);
@@ -27,6 +27,7 @@ public class ConstructorMain {
         Parent parent1 = new Parent("Sergiy", 45);
         System.out.println("-----------------------------------------------");
 
+        Child.printStaticName();
 
         Child child = new Child();
         System.out.println("-----------------------------------------------");
@@ -34,7 +35,9 @@ public class ConstructorMain {
         System.out.println("-----------------------------------------------");
         Child child2 = new Child("Olena", 14, "School 1");
         System.out.println("-----------------------------------------------");
-
+        Child child3 = new Child("Dima", "School 3");
+        System.out.println("-----------------------------------------------");
+        child3.printName();
 
         ChildOfChild childOfChild = new ChildOfChild();
         System.out.println("-----------------------------------------------");
@@ -42,6 +45,7 @@ public class ConstructorMain {
         System.out.println("-----------------------------------------------");
         ChildOfChild childOfChild2 = new ChildOfChild("Oleh", 3, "School 13");
         System.out.println("-----------------------------------------------");
+
 
         Child childCreation = new Child("Olena", 14, "School 1");
         System.out.println(childCreation);

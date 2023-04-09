@@ -2,15 +2,20 @@ package oop.enumeration;
 
 import java.util.Arrays;
 
+import static oop.enumeration.DayOfWeek.MONDAY;
+
 public class EnumMain {
     public static void main(String[] args) {
+        DayOfWeek dayOfWeek = MONDAY;
+        System.out.println(dayOfWeek);
         System.out.println("-------------------------------------------------------------------");
-        System.out.println(Day.MONDAY);
+        System.out.println(MONDAY);
         System.out.println("-------------------------------------------------------------------");
 
         Day current = Day.THURSDAY;
         System.out.println(current);
         System.out.println("-------------------------------------------------------------------");
+        BookType type = BookType.PHANTASY;
 
         Book book = new Book("Harry Potter", "Joanne Rowling", BookType.PHANTASY);
 

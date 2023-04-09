@@ -23,4 +23,12 @@ public class Parent {
         System.out.println("Name: " + this.name);
         System.out.println("Age: " + this.age);
     }
+
+    public static void printStaticName() {
+        System.out.println(staticName);
+    }
+
+    public void printName() {
+        System.out.println(this.name);
+    }
 }

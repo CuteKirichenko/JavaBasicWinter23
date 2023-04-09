@@ -10,9 +10,17 @@ public class Child extends Parent {
     }
 
     public Child(String school) {
+        this("Name", school);
         System.out.println("Child constructor with school");
         this.school = school;
     }
+
+    public Child(String name, String school) {
+        System.out.println("Child constructor with name and school");
+        this.school = school;
+        super.name = name;
+    }
+
 
     public Child(String name, int age, String school) {
         super(name, age);
