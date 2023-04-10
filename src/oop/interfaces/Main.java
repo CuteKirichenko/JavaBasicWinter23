@@ -7,18 +7,18 @@ import oop.interfaces.print.Printable;
 public class Main {
     public static void main(String[] args) {
         Book book = new Book("Name", "Author");
-        //book.defaultPrint();
-        //book.defaultPrintPrivatePrefix();
-        //book.print();
+        book.defaultPrint();
+        book.defaultPrintPrivatePrefix();
+        book.print();
 
         Journal journal = new Journal("Elle");
-        //journal.print();
-        //journal.defaultPrint();
+        journal.print();
+        journal.defaultPrint();
 
+        Printable.read();
 
-        //Printable.read();
-        Printable printable = createPrintable("Foreign Affairs", false);
-       // printable.print();
+        Printable printable = createPrintable("Foreign Affairs", true);
+        printable.print();
 
         read(new Book("Java for inpatients", "Cay Horstmann"));
         read(new Journal("Java Daily News"));
@@ -28,6 +28,16 @@ public class Main {
 
         bookP.print();
         journalP.print();
+
+        Printable[] printables = new Printable[2];
+        printables[0] = bookP;
+        printables[1] = journalP;
+
+        System.out.println("---------------");
+        for (Printable prnt : printables) {
+            prnt.print();
+            prnt.defaultPrint();
+        }
     }
 
     static void read(Printable printable) {

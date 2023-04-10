@@ -14,6 +14,10 @@ public class Book implements Printable, Searchable {
         System.out.println(name + " (" + author + ")");
     }
 
+    @Override
+    public void defaultPrint() {
+        System.out.println("I am not default print!");
+    }
 
     int sum(int one, int two) {
         return one + two;

@@ -7,16 +7,16 @@ public interface Printable {
         System.out.println("Undefined printable");
     }
 
- /*   default void defaultPrintPrivatePrefix() {
+    default void defaultPrintPrivatePrefix() {
         System.out.println(getPrivatePrefix() + "Undefined printable");
-    }*/
+    }
 
     static void read() {
         System.out.println("Read printable");
     }
 
     //Java 9+
-/*    private String getPrivatePrefix() {
+    private String getPrivatePrefix() {
         return "PRIVATE PREFIX-";
-    }*/
+    }
 }
