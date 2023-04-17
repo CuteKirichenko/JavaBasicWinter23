@@ -1,7 +1,7 @@
 package oop.modificators;
 
 /**
- * Наследник MyClass из того же пакета
+ * Наследник main.MyClass из того же пакета
  */
 public class MyClassChild extends MyClass {
 

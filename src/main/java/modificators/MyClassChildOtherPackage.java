@@ -2,7 +2,7 @@ package modificators;
 
 import oop.modificators.MyClass;
 /**
- * Наследник MyClass из другого пакета
+ * Наследник main.MyClass из другого пакета
  */
 public class MyClassChildOtherPackage extends MyClass {
 

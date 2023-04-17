@@ -2,7 +2,7 @@ package modificators;
 
 import oop.modificators.MyClass;
 /**
- * Не наследник MyClass из другого пакета
+ * Не наследник main.MyClass из другого пакета
  */
 public class NotChildOfMyClass {
 
